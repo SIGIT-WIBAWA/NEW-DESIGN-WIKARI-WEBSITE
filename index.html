@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIKARI IT INFRASTRUCTURE | Solusi Infrastruktur IT & Managed Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0F172A',
+                            navy: '#1E3A8A',
+                            cyan: '#06B6D4',
+                            cyanHover: '#0891B2',
+                            slate: '#F8FAFC',
+                            card: '#1E293B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, #1e3a8a 0%, #0f172a 70%);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #06b6d4;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-slate text-slate-800 font-sans antialiased selection:bg-brand-cyan selection:text-white">
+
+    <!-- Top Bar Info -->
+    <div class="bg-brand-dark border-b border-slate-800 text-slate-400 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-phone text-brand-cyan mr-1.5"></i> +62 812-3456-9360</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-envelope text-brand-cyan mr-1.5"></i> info@wikari.co.id</span>
+                <span class="hidden lg:inline"><i class="fa-solid fa-clock text-brand-cyan mr-1.5"></i> Onsite SLA 2 Jam (Area Industri)</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Network Operations Center Active
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-brand-dark/95 backdrop-blur border-b border-slate-800 text-white transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <div class="font-black text-xl tracking-wider text-white flex items-center gap-1">
+                            WIKARI <span class="text-brand-cyan">IT</span>
+                        </div>
+                        <div class="text-[10px] tracking-widest text-slate-400 font-semibold uppercase -mt-1">
+                            Infrastructure & Services
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden xl:flex items-center space-x-1 text-sm font-medium">
+                    <a href="#layanan" class="px-3 py-2 rounded-lg hover:text-brand-cyan hover:bg-slate-800/60 transition">Layanan</a>
+                    <a href="#kalkulator" class="px-3 py-2 rounded-lg text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/30 hover:bg-brand-cyan/20 transition"><i class="fa-solid fa-calculator mr-1"></i> Kalkulator Biaya</a>
+                    <a href="#harga" class="px-3 py-2 rounded-lg hover:text-brand-cyan hover:bg-slate-800/60 transition">Transparansi Harga</a>
+                    <a href="#portofolio" class="px-3 py-2 rounded-lg hover:text-brand-cyan hover:bg-slate-800/60 transition">Portofolio</a>
+                    <a href="#coverage" class="px-3 py-2 rounded-lg hover:text-brand-cyan hover:bg-slate-800/60 transition">Coverage & SLA</a>
+                    <a href="#faq" class="px-3 py-2 rounded-lg hover:text-brand-cyan hover:bg-slate-800/60 transition">FAQ</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openRfpModal()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 transition hover:scale-105 active:scale-95 flex items-center gap-2">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <span>Minta RFP / Penawaran</span>
+                    </button>
+                    <a href="https://wa.me/6281288880192?text=Halo%20WIKARI%20IT%20Infrastructure,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20IT" target="_blank" class="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex xl:hidden">
+                    <button id="mobileMenuBtn" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden xl:hidden bg-brand-dark border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="#layanan" class="block px-3 py-2 rounded-md hover:bg-slate-800 text-base font-medium">Layanan</a>
+            <a href="#kalkulator" class="block px-3 py-2 rounded-md bg-brand-cyan/10 text-brand-cyan font-medium"><i class="fa-solid fa-calculator mr-2"></i> Kalkulator Biaya Direct-WA</a>
+            <a href="#harga" class="block px-3 py-2 rounded-md hover:bg-slate-800 text-base font-medium">Transparansi Harga</a>
+            <a href="#portofolio" class="block px-3 py-2 rounded-md hover:bg-slate-800 text-base font-medium">Portofolio</a>
+            <a href="#coverage" class="block px-3 py-2 rounded-md hover:bg-slate-800 text-base font-medium">Coverage & SLA</a>
+            <a href="#faq" class="block px-3 py-2 rounded-md hover:bg-slate-800 text-base font-medium">FAQ</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <button onclick="openRfpModal()" class="w-full py-3 rounded-xl bg-brand-cyan text-slate-900 font-bold text-center">
+                    Minta Penawaran / RFP
+                </button>
+                <a href="https://wa.me/6281234569360" target="_blank" class="w-full py-3 rounded-xl bg-emerald-600 text-white font-bold text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Chat WhatsApp Direct
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative hero-gradient text-white py-20 lg:py-28 overflow-hidden">
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Mitra Outsourcing & Infrastructure IT Terpercaya</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Solusi Infrastruktur & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-400">Managed Services IT</span> Standar Enterprise
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Kami mengelola jaringan fiber optic, struktur perkabelan LAN, server room, CCTV, hingga SLA maintenance IT onsite untuk pabrik, gedung kantor, dan cabang perusahaan Anda secara transparan.
+                    </p>
+
+                    <!-- Key Pillars Highlights -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-left">
+                            <i class="fa-solid fa-bolt text-brand-cyan text-xl mb-1"></i>
+                            <div class="font-bold text-sm text-white">SLA Fast Response</div>
+                            <div class="text-xs text-slate-400">Respon Onsite &lt;2 Jam</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-left">
+                            <i class="fa-solid fa-receipt text-brand-cyan text-xl mb-1"></i>
+                            <div class="font-bold text-sm text-white">Harga Transparan</div>
+                            <div class="text-xs text-slate-400">Rincian per titik jernih</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-left">
+                            <i class="fa-solid fa-user-check text-brand-cyan text-xl mb-1"></i>
+                            <div class="font-bold text-sm text-white">Certified Team</div>
+                            <div class="text-xs text-slate-400">MikroTik, Cisco, Fortinet</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-left">
+                            <i class="fa-solid fa-award text-brand-cyan text-xl mb-1"></i>
+                            <div class="font-bold text-sm text-white">Garansi Pengerjaan</div>
+                            <div class="text-xs text-slate-400">Dukungan pasca-instalasi</div>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+                        <a href="#kalkulator" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-base shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-3 transition hover:-translate-y-0.5">
+                            <i class="fa-solid fa-calculator text-lg"></i>
+                            <span>Hitung Estimasi Biaya</span>
+                        </a>
+                        <button onclick="openRfpModal()" class="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-semibold text-base flex items-center justify-center gap-2 transition">
+                            <i class="fa-solid fa-paper-plane text-brand-cyan"></i>
+                            <span>Minta Penawaran / RFP</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Side Interactive Showcase Preview -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel p-6 rounded-2xl shadow-2xl relative">
+                        <div class="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                <span class="text-xs font-mono text-slate-400 ml-2">noc.wikari-it.co.id</span>
+                            </div>
+                            <span class="text-xs text-brand-cyan font-semibold uppercase tracking-wider">Status: Online</span>
+                        </div>
+
+                        <!-- Live Status Dashboard Mockup -->
+                        <div class="space-y-4">
+                            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-blue-500/20 text-blue-400 rounded-lg">
+                                        <i class="fa-solid fa-server"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-400">Server Rack & Core Switch</div>
+                                        <div class="text-sm font-semibold text-white">42U Industrial Rack Managed</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-800">Normal</span>
+                            </div>
+
+                            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-cyan-500/20 text-brand-cyan rounded-lg">
+                                        <i class="fa-solid fa-network-wired"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-400">Fiber Optic Backhaul & Splicing</div>
+                                        <div class="text-sm font-semibold text-white">Singlemode OTDR Verified</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-800">0.02 dB Loss</span>
+                            </div>
+
+                            <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-amber-500/20 text-amber-400 rounded-lg">
+                                        <i class="fa-solid fa-user-gear"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-400">Onsite IT Engineer Contract</div>
+                                        <div class="text-sm font-semibold text-white">Dedicated Support Ready</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-brand-cyan bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800">24/7 SLA</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini SLA Stat Badge -->
+                        <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-brand-navy to-slate-900 border border-brand-cyan/20 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase font-bold tracking-wider">Garansi SLA Uptime</div>
+                                <div class="text-2xl font-black text-white">99.8%</div>
+                            </div>
+                            <a href="#kalkulator" class="text-xs font-semibold text-brand-cyan hover:underline flex items-center gap-1">
+                                Cek Biaya Layanan <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-dark border-y border-slate-800 py-10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-cyan">250+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Proyek Infrastruktur Selesai</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-cyan">99.8%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Uptime Guarantee SLA</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-cyan">50+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Klien Korporat & Industri</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-cyan">&lt; 2 Jam</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Emergency Response Onsite</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="layanan" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest bg-cyan-100/80 px-3 py-1 rounded-full inline-block border border-cyan-200">
+                    Layanan Unggulan
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Solusi IT Komprehensif untuk Pabrik, Office & Modern Enterprise
+                </h3>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Dari perencanaan awal, penarikan kabel fisik, integrasi server rack, hingga kontrak IT outsourcing harian/bulanan.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-brand-cyan text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">Instalasi Kabel LAN & Fiber Optic</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Penarikan kabel UTP Cat6/Cat6A & Fiber Optic (Singlemode/Multimode), lengkap dengan OTDR Testing, Labeling, Fluke Test report, & Splicing presisi tinggi.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Standar TIA/EIA Structured Cabling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Splicing FO & Pembuatan Patch Core</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Dokumentasi Denah & Labeling Jelas</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Harga per titik transparan</span>
+                        <a href="#kalkulator" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Hitung Biaya <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-navy text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">Perapihan & Instalasi Server Rack</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Restrukturasi server room yang berantakan, pemasangan Patch Panel, Cable Management Vertical/Horizontal, Migrasi Rack 24U/42U tanpa downtime kritis.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Cable Tracing & Repatching</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pemasangan PDU & Cooling Optimization</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Labeling Switch Port & Server</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Solusi Bebas Dowtime</span>
+                        <a href="#kalkulator" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Hitung Biaya <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">IT Managed Services & Outsourcing</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Layanan IT Helpdesk & Field Engineer dedicated harian / bulanan. Pemeliharaan preventif rutin, troubleshooting hardware/software, & backup server.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> SLA Penanganan Onsite & Remote</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Laporan Bulanan Performance IT</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Opsi Visit Periodic & Fulltime</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Kontrak Fleksibel</span>
+                        <a href="#kalkulator" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Hitung Biaya <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">CCTV & Access Control Door</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Instalasi sistem pengawasan IP Camera HD/4K, NVR Centralized Storage, Serta Access Door Card/Fingerprint/Face Recognition untuk security gedung.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> IP Camera POE High Durability</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Door Access Magnet Lock & Attendance</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Remote View dari Smartphone & PC</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Integrasi Keamanan</span>
+                        <a href="#kalkulator" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Hitung Biaya <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">Enterprise Wi-Fi & Firewall Security</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Desain Seamless Roaming Wi-Fi Access Point (UniFi, Aruba, Ruijie), Konfigurasi MikroTik Bandwidth Management, & Fortinet Firewall Protection.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Heatmap & Wi-Fi Survey Area</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Captive Portal Guest & Bandwidth Limiter</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Security Rule & Site-to-Site VPN</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Koneksi Tanpa Putus</span>
+                        <a href="#kalkulator" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Hitung Biaya <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800 text-2xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-comments-dollar"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900">Konsultasi IT & Site Audit Infrastruktur</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Audit komprehensif kondisi jaringan eksisting, analisis kerentanan keamanan, penyusunan BoQ (Bill of Quantities) & Rekomendasi Modernisasi IT.
+                        </p>
+                        <ul class="text-xs text-slate-500 space-y-2 pt-2">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Laporan Latihan Audit Lengkap</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Perancangan Topology 2D/3D</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Estimasi Anggaran Efisien</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-100 mt-6 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-400">Free Initial Consult</span>
+                        <button onclick="openRfpModal()" class="text-sm font-bold text-brand-cyan hover:text-cyan-700 flex items-center gap-1">Ajukan Audit <i class="fa-solid fa-chevron-right text-xs"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kalkulator" class="py-20 bg-brand-dark text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-calculator"></i> Estimator Direct-to-WA
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold">Kalkulator Estimasi Biaya Infrastruktur</h2>
+                <p class="text-slate-300 text-sm sm:text-base">
+                    Geser atau masukkan jumlah kebutuhan proyek Anda di bawah ini untuk melihat estimasi anggaran awal secara transparan.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Input Control Panel -->
+                <div class="lg:col-span-7 bg-slate-900/90 p-6 sm:p-8 rounded-2xl border border-slate-800 space-y-6">
+                    <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center justify-between">
+                        <span><i class="fa-solid fa-sliders text-brand-cyan mr-2"></i> Kebutuhan Titik & Layanan</span>
+                        <span class="text-xs font-normal text-slate-400">*Termasuk material standar & jasa rapi</span>
+                    </h3>
+
+                    <!-- Item 1: LAN Cat6 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label class="font-semibold text-slate-200">Titik Kabel LAN / UTP Cat6 (Per Titik)</label>
+                            <span class="text-brand-cyan font-bold font-mono"><span id="lanVal">10</span> Titik</span>
+                        </div>
+                        <input type="range" id="lanSlider" min="0" max="100" value="10" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+                        <div class="text-[11px] text-slate-400 flex justify-between">
+                            <span>Harga est: Rp 280.000 / titik</span>
+                            <span>Kabel Belden/Schneider + Modular Plug</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Fiber Optic & Splicing -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label class="font-semibold text-slate-200">Titik Fiber Optic + Splicing (Per Core/Titik)</label>
+                            <span class="text-brand-cyan font-bold font-mono"><span id="foVal">2</span> Titik</span>
+                        </div>
+                        <input type="range" id="foSlider" min="0" max="30" value="2" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+                        <div class="text-[11px] text-slate-400 flex justify-between">
+                            <span>Harga est: Rp 750.000 / titik</span>
+                            <span>Termasuk OTDR test & Splicing Joint</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: CCTV & Access Control -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label class="font-semibold text-slate-200">Titik CCTV IP / Door Access (Per Titik)</label>
+                            <span class="text-brand-cyan font-bold font-mono"><span id="cctvVal">4</span> Titik</span>
+                        </div>
+                        <input type="range" id="cctvSlider" min="0" max="50" value="4" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan" oninput="updateCalculator()">
+                        <div class="text-[11px] text-slate-400 flex justify-between">
+                            <span>Harga est: Rp 450.000 / titik</span>
+                            <span>Instalasi, Mounting & Setting NVR</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Server Rack Setup -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label class="font-semibold text-slate-200">Instalasi / Perapihan Server Rack</label>
+                            <span class="text-brand-cyan font-bold font-mono" id="rackText">1 Rack (24U - 42U)</span>
+                        </div>
+                        <select id="rackSelect" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-brand-cyan" onchange="updateCalculator()">
+                            <option value="0">Tidak Membutuhkan Perapihan Rack</option>
+                            <option value="1" selected>1 Unit Server Rack (Wallmount / Standing)</option>
+                            <option value="2">2 Unit Server Rack</option>
+                            <option value="3">3+ Unit Server Rack Room Major</option>
+                        </select>
+                    </div>
+
+                    <!-- Item 5: IT Support Onsite / Contract -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label class="font-semibold text-slate-200">Layanan IT Support / Managed Services</label>
+                            <span class="text-brand-cyan font-bold font-mono" id="managedText">Tanpa Kontrak</span>
+                        </div>
+                        <select id="managedSelect" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-brand-cyan" onchange="updateCalculator()">
+                            <option value="none">Tanpa Kontrak Bulanan (Project Only)</option>
+                            <option value="visit">Visit Incident Periodic (2x Visit / Bulan)</option>
+                            <option value="dedicated">Dedicated Onsite IT Engineer (Fulltime Monthly)</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Live Summary Display Card -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-brand-navy p-6 sm:p-8 rounded-2xl border border-brand-cyan/30 shadow-2xl space-y-6">
+                    <div>
+                        <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Ringkasan Estimasi Biaya</span>
+                        <h4 class="text-2xl font-black text-white mt-1">Simulasi Anggaran Proyek</h4>
+                        <p class="text-xs text-slate-400">WIKARI IT INFRASTRUCTURE Transparent Quote</p>
+                    </div>
+
+                    <!-- Breakdown table -->
+                    <div class="space-y-3 text-sm border-y border-slate-700/80 py-4 font-mono">
+                        <div class="flex justify-between text-slate-300">
+                            <span>LAN Cat6 (<span id="summaryLanQty">10</span>x):</span>
+                            <span id="summaryLanPrice" class="font-bold">Rp 2.800.000</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>FO & Splicing (<span id="summaryFoQty">2</span>x):</span>
+                            <span id="summaryFoPrice" class="font-bold">Rp 1.500.000</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>CCTV / Access (<span id="summaryCctvQty">4</span>x):</span>
+                            <span id="summaryCctvPrice" class="font-bold">Rp 1.800.000</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>Server Rack:</span>
+                            <span id="summaryRackPrice" class="font-bold">Rp 1.500.000</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>Managed IT:</span>
+                            <span id="summaryManagedPrice" class="font-bold">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Cost -->
+                    <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-700">
+                        <div class="text-xs text-slate-400">Total Estimasi Anggaran (IDR):</div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-cyan mt-1" id="grandTotalDisplay">
+                            Rp 7.600.000
+                        </div>
+                        <div class="text-[11px] text-slate-400 mt-1">
+                            *Estimasi indikatif belum termasuk PPN & diskon quantity proyek besar.
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Send Action -->
+                    <button onclick="sendEstimateToWhatsApp()" class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base transition flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/30">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Kirim Rincian Estimasi ke WhatsApp</span>
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400">
+                        <i class="fa-solid fa-lock text-brand-cyan mr-1"></i> Data rincian akan terformat otomatis di aplikasi WhatsApp Anda.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest bg-cyan-100/80 px-3 py-1 rounded-full inline-block border border-cyan-200">
+                    Transparansi Harga
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Daftar Harga acuan Per Titik & Scope of Work (SOW)
+                </h3>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Tanpa biaya tersembunyi. Semua spesifikasi material dan garansi disebutkan secara eksplisit.
+                </p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterPriceTable('all')" class="price-tab-btn active px-5 py-2.5 rounded-xl text-sm font-semibold transition bg-brand-dark text-white shadow-md">Semua Layanan</button>
+                <button onclick="filterPriceTable('lan-fo')" class="price-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">Jaringan & FO</button>
+                <button onclick="filterPriceTable('server-rack')" class="price-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">Server & Rack</button>
+                <button onclick="filterPriceTable('security')" class="price-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">Security & Access</button>
+                <button onclick="filterPriceTable('managed')" class="price-tab-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200">Managed Support</button>
+            </div>
+
+            <!-- Price Table -->
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider">
+                            <th class="p-4 sm:p-5">Kategori / Item Pekerjaan</th>
+                            <th class="p-4 sm:p-5">Scope of Work (SOW) & Inklusi</th>
+                            <th class="p-4 sm:p-5">Satuan</th>
+                            <th class="p-4 sm:p-5 text-right">Harga Mulai (IDR)</th>
+                            <th class="p-4 sm:p-5 text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-sm text-slate-700" id="pricingTableBody">
+                        
+                        <!-- Row 1 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="lan-fo">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-network-wired text-brand-cyan"></i>
+                                    Instalasi Titik Kabel LAN Cat6
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Penarikan kabel Belden/Schneider Cat6, Modular Jack, Faceplate, Cable Tray/Pipa Conduit PVC, Patch Cord 1m & Testing Fluke.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Titik</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 280.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Instalasi LAN Cat6')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="lan-fo">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-brand-cyan"></i>
+                                    Penarikan FO & Splicing Joint
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Kabel FO Armored Outdoor/Indoor 4-12 Core, Terminated OTB, Splicing Fusion, Pig Tail, Fast Connector & OTDR Loss Report.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Core/Point</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 750.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Penarikan FO & Splicing')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="server-rack">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-server text-brand-navy"></i>
+                                    Perapihan Server Rack 24U/42U
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Cable Tracing, Re-patching, Labeling kabel, Restrukturasi Patch Panel, Install Wire Management, & Dokuementasi Port Diagram.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Rack</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 1.500.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Perapihan Server Rack')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="security">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-video text-purple-600"></i>
+                                    Instalasi CCTV IP Camera
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Mounting Kamera, Setting POE Switch, Penarikan Kabel UTP, Setting NVR Recording, Remote Cloud Access Smartphone.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Titik</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 450.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Instalasi CCTV IP')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="security">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-door-closed text-purple-600"></i>
+                                    Access Control Door System
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Pemasangan Magnetic Lock/Dropbolt, RFID Card Reader / Biometric Face ID, Breakglass Exit Button, Power Supply Centralized.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Pintu</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 2.200.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Access Control Door')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 6 -->
+                        <tr class="price-row hover:bg-slate-50 transition" data-category="managed">
+                            <td class="p-4 sm:p-5 font-bold text-slate-900">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-headset text-emerald-600"></i>
+                                    IT Support Contract (Dedicated Onsite)
+                                </div>
+                            </td>
+                            <td class="p-4 sm:p-5">
+                                Support Engineer Onsite full 5 hari kerja, Preventive Maintenance, Troubleshooting PC/LAN/Printer, Server Backup Routine.
+                            </td>
+                            <td class="p-4 sm:p-5 font-mono text-xs text-slate-500">Per Bulan</td>
+                            <td class="p-4 sm:p-5 text-right font-extrabold text-slate-900 font-mono">Rp 4.500.000</td>
+                            <td class="p-4 sm:p-5 text-center">
+                                <button onclick="selectPriceItem('Dedicated IT Support Contract')" class="px-3 py-1.5 rounded-lg bg-cyan-50 text-brand-cyan hover:bg-brand-cyan hover:text-white font-semibold text-xs transition">
+                                    Pesan
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 text-center text-xs text-slate-500">
+                <i class="fa-solid fa-circle-info text-brand-cyan mr-1"></i> Membutuhkan jumlah titik dalam skala besar (&gt;100 titik)? Hubungi tim kami untuk harga diskon borongan enterprise.
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest bg-cyan-950/80 px-3 py-1 rounded-full inline-block border border-cyan-800">
+                    Studi Kasus Proyek
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold">
+                    Portofolio Pengerjaan Infrastruktur IT
+                </h3>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Bukti nyata pengerjaan rapi & terstruktur di berbagai kawasan industri dan perkantoran.
+                </p>
+            </div>
+
+            <!-- Portfolio Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterPortfolio('all')" class="port-tab-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-brand-cyan text-slate-900">Semua Proyek</button>
+                <button onclick="filterPortfolio('rack')" class="port-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">Penataan Server Rack</button>
+                <button onclick="filterPortfolio('cabling')" class="port-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">Penarikan Cable FO/LAN</button>
+                <button onclick="filterPortfolio('managed')" class="port-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">Managed IT Support</button>
+                <button onclick="filterPortfolio('security')" class="port-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-800 text-slate-300 hover:bg-slate-700">CCTV & Access Door</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+                
+                <!-- Project 1 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="rack">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Room Modernization" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Kawasan MM2100 Cikarang</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Selesai</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Migrasi & Restrukturasi Server Rack 42U</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Penataan ulang 120+ patch cord berantakan tanpa mengganggu jam operasional pabrik manufaktur otomotif.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Durasi: 2 Hari</span>
+                            <span>SOW: Cable Tracing & Repatching</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="cabling">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Fiber Optic Splicing" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Kawasan KIIC Karawang</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Selesai</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Penarikan Fiber Optic Backbone 12-Core</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Penyambungan antar gedung pabrik sepanjang 1.2 KM dengan kabel FO Armored & Full OTDR Test 0.01dB loss.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Durasi: 5 Hari</span>
+                            <span>SOW: Splicing & OTDR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="security">
+                    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80" alt="IP CCTV System" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Gedung Perkantoran Jakarta</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Selesai</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">48 Titik IP Camera & Access Control</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Instalasi CCTV Hikvision 4K terintegrasi dengan NVR RAID Storage & Access Card Door pada 8 lantai kantor.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Durasi: 1 Minggu</span>
+                            <span>SOW: Security Integrated</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="managed">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="IT Managed Service" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Logistik Hub Jabodetabek</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Kontrak Berjalan</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Dedicated Managed Support 24/7</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Penempatan 2 orang Dedicated Engineer onsite untuk menangani 150+ user workstation, network, & thermal printer.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Kontrak: 1 Tahun</span>
+                            <span>SOW: Full IT Managed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="cabling">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Structured LAN Cabling" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Jababeka Cikarang</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Selesai</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Instalasi 80 Titik LAN Cat6 Factory Area</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Penarikan kabel jaringan indoor & outdoor dengan pipa conduit kaku heavy duty pelindung fisik dari gesekan produksi.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Durasi: 4 Hari</span>
+                            <span>SOW: Structured Cabling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="port-item bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-cyan transition duration-300" data-cat="rack">
+                    <img src="https://images.unsplash.com/photo-1520869578617-557561d7b114?auto=format&fit=crop&w=800&q=80" alt="Mikrotik & Cisco Network Config" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-brand-cyan font-mono">
+                            <span>Surabaya Branch Office</span>
+                            <span class="bg-emerald-900/60 text-emerald-400 px-2 py-0.5 rounded border border-emerald-700">Selesai</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Setup Multi-WAN Router & Core Switch</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Konfigurasi MikroTik Load Balancing 3 Provider Internet + VPN Site-to-Site ke HQ Jakarta dengan Enkripsi IPsec.
+                        </p>
+                        <div class="pt-3 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-clock text-brand-cyan mr-1"></i> Durasi: 1 Hari</span>
+                            <span>SOW: Routing & Security</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="coverage" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 text-brand-cyan text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-map-location-dot"></i> Service Area Coverage
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                        Cakupan Wilayah Operasional & Guaranteed Onsite SLA
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Tim teknisi certified WIKARI IT INFRASTRUCTURE siap diterjunkan langsung ke lokasi Anda di berbagai area pusat bisnis & kawasan industri strategis.
+                    </p>
+
+                    <!-- SLA Time Cards -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs text-slate-400 font-semibold">SLA Area Industri</div>
+                            <div class="text-2xl font-black text-brand-cyan mt-1">&lt; 2 Jam Onsite</div>
+                            <p class="text-[11px] text-slate-500 mt-1">Cikarang, MM2100, KIIC, EJIP, Deltamas</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs text-slate-400 font-semibold">SLA Perkotaan</div>
+                            <div class="text-2xl font-black text-brand-navy mt-1">&lt; 3 Jam Onsite</div>
+                            <p class="text-[11px] text-slate-500 mt-1">DKI Jakarta, Tangerang, Depok, Bekasi</p>
+                        </div>
+                    </div>
+
+                    <!-- Location Badges -->
+                    <div class="space-y-3">
+                        <div class="text-xs font-bold text-slate-700 uppercase tracking-wider">Kawasan Tercover Utama:</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> Cikarang (MM2100, Jababeka, Delta Silicon)</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> Karawang (KIIC, Suryacipta, KIM)</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> DKI Jakarta (Pusat, Selatan, Barat, Timur, Utara)</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> Tangerang & BSD City</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> Depok & Bogor Industrial</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 text-xs font-semibold"><i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> Bandung & Jawa Barat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Dispatch Interactive Callout -->
+                <div class="lg:col-span-6 bg-brand-dark p-8 rounded-3xl text-white border border-slate-800 relative shadow-2xl overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-cyan/10 rounded-full blur-3xl"></div>
+                    
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center text-xl animate-pulse">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Butuh Penanganan Darurat / Network Down?</h3>
+                                <p class="text-xs text-slate-400">Tim emergency NOC WIKARI IT siap meluncur</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400">Status Teknisi Emergency:</span>
+                                <span class="text-emerald-400 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Standby On Duty</span>
+                            </div>
+                            <div class="text-sm font-semibold text-slate-200">
+                                Layanan kabel putus, server mati mendadak, switch crash, atau kendala internet kantor.
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/6281288880192?text=EMERGENCY%20SUPPORT:%20Halo%20WIKARI%20IT,%20kami%20membutuhkan%20bantuan%20penanganan%20darurat%20infrastruktur%20secepatnya" target="_blank" class="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-center block shadow-lg transition">
+                            <i class="fa-solid fa-phone-volume mr-2"></i> Panggil Hotline Emergency WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-3">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest bg-cyan-100/80 px-3 py-1 rounded-full inline-block border border-cyan-200">
+                    Frequently Asked Questions
+                </h2>
+                <h3 class="text-3xl font-extrabold text-slate-900">Pertanyaan Yang Sering Diajukan</h3>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center">
+                        <span>Apakah WIKARI IT menyediakan survey lokasi sebelum pengerjaan?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-cyan transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden p-5 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Ya, kami memberikan fasilitas Free Survey Lokasi awal untuk wilayah Jabodetabek, Cikarang, dan Karawang. Tim kami akan melakukan pemetaan titik, pengukuran jarak kabel, serta penyusunan BoQ (Bill of Quantities) transparan.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center">
+                        <span>Bagaimana mekanisme garansi pengerjaan di WIKARI IT?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-cyan transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden p-5 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Kami memberikan Garansi Instalasi Fisik hingga 3 - 12 bulan (tergantung paket layanan). Jika terjadi kendala pada sambungan kabel, patch panel, atau konfigurasi switch dalam masa garansi, teknisi kami akan hadir tanpa biaya tambahan.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center">
+                        <span>Apakah pengerjaan perapihan server rack bisa dilakukan di luar jam kerja (weekend/malam)?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-cyan transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden p-5 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Sangat bisa. Kami memahami bahwa perapihan server room seringkali membutuhkan downtime jaringan. Kami melayani skedul pengerjaan malam hari (after office hours) atau hari libur/weekend agar tidak mengganggu operasional bisnis perusahaan Anda.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-slate-900 bg-slate-50 hover:bg-slate-100 flex justify-between items-center">
+                        <span>Sertifikasi apa yang dimiliki oleh teknisi WIKARI IT?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-cyan transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden p-5 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Tim teknisi & network engineer kami tersertifikasi secara profesional seperti MikroTik Certified Network Associate (MTCNA), Cisco CCNA, Fortinet NSE, serta Sertifikasi Fiber Optic Splicing & Cabling Standard.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak" class="bg-brand-dark text-slate-400 border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan to-blue-600 flex items-center justify-center text-white font-bold text-xl">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div class="font-black text-xl tracking-wider text-white">
+                            WIKARI <span class="text-brand-cyan">IT</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        WIKARI IT INFRASTRUCTURE (Wikari IT) - Penyedia jasa kelola IT, konsultan jaringan, penarikan kabel FO/LAN, CCTV, & IT Outsourcing terpercaya untuk perusahaan & kawasan industri Berdiri sejak 2008.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-cyan hover:text-slate-900 transition flex items-center justify-center text-slate-300"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-cyan hover:text-slate-900 transition flex items-center justify-center text-slate-300"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-cyan hover:text-slate-900 transition flex items-center justify-center text-slate-300"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-3">
+                    <div class="text-sm font-bold text-white uppercase tracking-wider">Navigasi</div>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">Layanan Utama</a></li>
+                        <li><a href="#kalkulator" class="hover:text-brand-cyan transition">Kalkulator Biaya Direct-WA</a></li>
+                        <li><a href="#harga" class="hover:text-brand-cyan transition">Transparansi Harga</a></li>
+                        <li><a href="#portofolio" class="hover:text-brand-cyan transition">Portofolio Proyek</a></li>
+                        <li><a href="#coverage" class="hover:text-brand-cyan transition">Cakupan SLA Area</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services List -->
+                <div class="space-y-3">
+                    <div class="text-sm font-bold text-white uppercase tracking-wider">Layanan Spesialis</div>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">Penarikan LAN Cat6 & FO</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">Perapihan Server Rack</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">Managed IT Support Onsite</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">CCTV & Door Access</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-cyan transition">MikroTik & Fortinet Config</a></li>
+                    </ul>
+                </div>
+
+                <!-- Office Contact Info -->
+                <div class="space-y-3">
+                    <div class="text-sm font-bold text-white uppercase tracking-wider">Kantor & NOC</div>
+                    <ul class="space-y-2.5 text-xs">
+                        <li class="flex gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-cyan mt-0.5"></i>
+                            <span>Kawasan Industri & Pusat Bisnis Jabodetabek / Cikarang Hub</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fa-solid fa-phone text-brand-cyan mt-0.5"></i>
+                            <span>+62 812-3456-9360 (Whatsapp)</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fa-solid fa-envelope text-brand-cyan mt-0.5"></i>
+                            <span>info@wikari.co.id / sigit@wikari.co.id</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+                <div>
+                    &copy; 2026 WIKARI IT INFRASTRUCTURE. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-slate-500">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">SLA Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="rfpModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+        <div class="bg-slate-900 border border-slate-700 text-white rounded-2xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeRfpModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-brand-cyan/20 text-brand-cyan text-xs font-bold uppercase mb-2">
+                    <i class="fa-solid fa-file-signature"></i> Official Quote Request
+                </div>
+                <h3 class="text-2xl font-bold">Minta Penawaran / RFP Proyek</h3>
+                <p class="text-xs text-slate-400">Isi formulir ringkas ini, tim WIKARI IT akan menghubungi Anda &lt;1 jam.</p>
+            </div>
+
+            <form id="rfpForm" onsubmit="handleRfpSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap *</label>
+                    <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Perusahaan / Pabrik *</label>
+                        <input type="text" required placeholder="PT. ABC Industry" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Jabatan</label>
+                        <input type="text" placeholder="IT Manager / Procurement" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor WhatsApp *</label>
+                        <input type="tel" required placeholder="081234569360" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Lokasi Proyek</label>
+                        <input type="text" placeholder="Cikarang / Jakarta" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Jenis Layanan Yang Dibutuhkan</label>
+                    <select class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
+                        <option>Penarikan Kabel LAN / Fiber Optic</option>
+                        <option>Perapihan / Restrukturasi Server Rack</option>
+                        <option>Kontrak IT Managed Services / Support Onsite</option>
+                        <option>CCTV IP & Access Control System</option>
+                        <option>Paket Komprehensif (Multi Service)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Catatan Kebutuhan / Detail Proyek</label>
+                    <textarea rows="3" placeholder="Jelaskan estimasi jumlah titik, batas waktu pengerjaan, atau kondisi lokasi..." class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-cyan"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-sm shadow-lg transition">
+                    Kirim Permintaan Penawaran (RFP)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+        <div id="waTooltip" class="hidden sm:block bg-slate-900 border border-slate-700 text-white px-3 py-2 rounded-xl text-xs shadow-xl animate-bounce">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="font-semibold">Konsultasi IT Gratis Direct-WA</span>
+            </div>
+        </div>
+
+        <a href="https://wa.me/6281234569360?text=Halo%20WIKARI%20IT%20Infrastructure,%20saya%20tertarik%20bertanya%20mengenai%20layanan%20IT" target="_blank" class="w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-2xl flex items-center justify-center text-2xl transition hover:scale-110 active:scale-95 group relative">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-white text-[10px] font-bold flex items-center justify-center">1</span>
+        </a>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Price Unit Constants
+        const PRICE_PER_LAN = 280000;
+        const PRICE_PER_FO = 750000;
+        const PRICE_PER_CCTV = 450000;
+
+        function updateCalculator() {
+            const lanQty = parseInt(document.getElementById('lanSlider').value);
+            const foQty = parseInt(document.getElementById('foSlider').value);
+            const cctvQty = parseInt(document.getElementById('cctvSlider').value);
+            const rackSelect = parseInt(document.getElementById('rackSelect').value);
+            const managedSelect = document.getElementById('managedSelect').value;
+
+            // UI Label updates
+            document.getElementById('lanVal').innerText = lanQty;
+            document.getElementById('foVal').innerText = foQty;
+            document.getElementById('cctvVal').innerText = cctvQty;
+
+            // Rack Cost Calculation
+            let rackCost = 0;
+            if(rackSelect === 1) {
+                rackCost = 1500000;
+                document.getElementById('rackText').innerText = "1 Unit Server Rack";
+            } else if(rackSelect === 2) {
+                rackCost = 2800000;
+                document.getElementById('rackText').innerText = "2 Unit Server Rack";
+            } else if(rackSelect === 3) {
+                rackCost = 4500000;
+                document.getElementById('rackText').innerText = "3+ Unit Server Room Major";
+            } else {
+                rackCost = 0;
+                document.getElementById('rackText').innerText = "Tanpa Rack Setup";
+            }
+
+            // Managed IT Cost Calculation
+            let managedCost = 0;
+            if(managedSelect === 'visit') {
+                managedCost = 2000000;
+                document.getElementById('managedText').innerText = "Visit Periodic (2x/Bln)";
+            } else if(managedSelect === 'dedicated') {
+                managedCost = 4500000;
+                document.getElementById('managedText').innerText = "Dedicated Onsite Monthly";
+            } else {
+                managedCost = 0;
+                document.getElementById('managedText').innerText = "Tanpa Kontrak";
+            }
+
+            // Line totals
+            const lanTotal = lanQty * PRICE_PER_LAN;
+            const foTotal = foQty * PRICE_PER_FO;
+            const cctvTotal = cctvQty * PRICE_PER_CCTV;
+
+            const grandTotal = lanTotal + foTotal + cctvTotal + rackCost + managedCost;
+
+            // Update Summary Card UI
+            document.getElementById('summaryLanQty').innerText = lanQty;
+            document.getElementById('summaryLanPrice').innerText = 'Rp ' + lanTotal.toLocaleString('id-ID');
+
+            document.getElementById('summaryFoQty').innerText = foQty;
+            document.getElementById('summaryFoPrice').innerText = 'Rp ' + foTotal.toLocaleString('id-ID');
+
+            document.getElementById('summaryCctvQty').innerText = cctvQty;
+            document.getElementById('summaryCctvPrice').innerText = 'Rp ' + cctvTotal.toLocaleString('id-ID');
+
+            document.getElementById('summaryRackPrice').innerText = 'Rp ' + rackCost.toLocaleString('id-ID');
+            document.getElementById('summaryManagedPrice').innerText = 'Rp ' + managedCost.toLocaleString('id-ID');
+
+            document.getElementById('grandTotalDisplay').innerText = 'Rp ' + grandTotal.toLocaleString('id-ID');
+        }
+
+        // Send Formatted Estimate to WhatsApp
+        function sendEstimateToWhatsApp() {
+            const lanQty = document.getElementById('lanVal').innerText;
+            const foQty = document.getElementById('foVal').innerText;
+            const cctvQty = document.getElementById('cctvVal').innerText;
+            const rackText = document.getElementById('rackText').innerText;
+            const managedText = document.getElementById('managedText').innerText;
+            const total = document.getElementById('grandTotalDisplay').innerText;
+
+            let message = `Halo WIKARI IT INFRASTRUCTURE,\n\n`;
+            message += `Saya membuat estimasi perincian kebutuhan IT melalui website:\n`;
+            message += `- Titik LAN Cat6: ${lanQty} titik\n`;
+            message += `- Titik Fiber Optic: ${foQty} titik\n`;
+            message += `- Titik CCTV / Access Door: ${cctvQty} titik\n`;
+            message += `- Perapihan Server Rack: ${rackText}\n`;
+            message += `- Layanan Support: ${managedText}\n\n`;
+            message += `*Total Estimasi Anggaran: ${total}*\n\n`;
+            message += `Mohon dibantu jadwal survey / jadwal diskusi penawaran resmi. Terima kasih!`;
+
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/6281288880192?text=${encodedMsg}`, '_blank');
+        }
+
+        // Pricing Table Filter
+        function filterPriceTable(category) {
+            const rows = document.querySelectorAll('.price-row');
+            const btns = document.querySelectorAll('.price-tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-brand-dark', 'text-white');
+
+            rows.forEach(row => {
+                if (category === 'all' || row.dataset.category === category) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Direct Order Item to WA
+        function selectPriceItem(itemName) {
+            const message = `Halo WIKARI IT INFRASTRUCTURE, saya berminat memesan / berkonsultasi mengenai item: *${itemName}* seperti di daftar harga website. Bisakah dijadwalkan survey?`;
+            window.open(`https://wa.me/6281288880192?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Portfolio Category Filter
+        function filterPortfolio(cat) {
+            const items = document.querySelectorAll('.port-item');
+            const btns = document.querySelectorAll('.port-tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-cyan', 'text-slate-900');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-brand-cyan', 'text-slate-900');
+
+            items.forEach(item => {
+                if(cat === 'all' || item.dataset.cat === cat) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // RFP Modal Controls
+        function openRfpModal() {
+            document.getElementById('rfpModal').classList.remove('hidden');
+        }
+
+        function closeRfpModal() {
+            document.getElementById('rfpModal').classList.add('hidden');
+        }
+
+        function handleRfpSubmit(e) {
+            e.preventDefault();
+            alert('Permintaan Penawaran (RFP) Anda berhasil terkirim ke WIKARI IT. Tim Engineer kami akan menghubungi Anda melalui WhatsApp / Email.');
+            closeRfpModal();
+            document.getElementById('rfpForm').reset();
+        }
+
+        // Initialize Calculator on load
+        window.onload = function() {
+            updateCalculator();
+        };
+    </script>
+</body>
+</html>
